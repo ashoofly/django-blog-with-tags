@@ -1,0 +1,8 @@
+<ul>
+    {% for tag in tags %}
+        <li><a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a></li>
+    {% empty %}
+        <p>No Tags</p>
+    {% endfor %}
+
+</ul>
