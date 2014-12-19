@@ -1,15 +1,19 @@
 <!--This is an includable, filename formatted with single underscore. -->
 
 <article>
-    <h2><a href="{{ entry.get_absolute_url }}">
-        {{ entry.title }}</a></h2>
+    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+
     <small><time>{{ entry.modified_at|date }}</time></small>
-    <p></p>
-    {{ entry.body|linebreaks }}
-    <small>tags: {% for tag in entry.tags.all %}
-       <a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a>, 
-        {% empty %}
-            no tags
+
+    <p>{{ entry.body|linebreaks }}</p>
+
+    <medium>
+        <p>tags: {% for tag in entry.tags.all %}
+            {% if not forloop.first %}, {% endif %}
+            <a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a> 
+            {% empty %}
+                no tags
         {% endfor %}
-     </small>
+     </medium>
+
 </article>
