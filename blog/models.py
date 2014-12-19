@@ -2,6 +2,8 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
+from taggit.managers import TaggableManager
+
 class Entry(models.Model):
     title = models.CharField(max_length=500)
     author = models.ForeignKey('auth.User')
@@ -9,6 +11,7 @@ class Entry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
     slug = models.SlugField(editable=False)
+    tags = TaggableManager()
 
     def get_absolute_url(self):
         kwargs = {'year': self.created_at.year,

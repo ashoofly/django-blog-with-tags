@@ -6,4 +6,10 @@
     <small><time>{{ entry.modified_at|date }}</time></small>
     <p></p>
     {{ entry.body|linebreaks }}
+    <small>tags: {% for tag in entry.tags.all %}
+       <a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a>, 
+        {% empty %}
+            no tags
+        {% endfor %}
+     </small>
 </article>
