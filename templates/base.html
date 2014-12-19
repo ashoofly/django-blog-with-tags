@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load blog_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
         </div>
         <div class="col-sm-4">
             <h3>Archives</h3>
-            <p>December 2014</p>
+            {% entry_history %}
         </div>
     </div>
     </div>
