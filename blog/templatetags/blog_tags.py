@@ -1,5 +1,6 @@
 from django import template
-from taggit.models import Tag
+from django.db.models import Count
+from taggit.models import Tag, TaggedItem
 
 from ..models import Entry
 
@@ -12,5 +13,6 @@ def entry_history():
 
 @register.inclusion_tag('blog/_tag_list.html')
 def tag_list():
-    tags = Tag.objects.order_by('name')
-    return {'tags': tags}
+#    tags = Tag.objects.order_by('name')
+    tags = Tag.objects.order_by('name').annotate(num_times=Count('taggit_taggeditem_items'))
+    return {'mytags': tags}

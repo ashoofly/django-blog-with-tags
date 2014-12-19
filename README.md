@@ -3,6 +3,7 @@
 ### Technologies Used: 
 - Django 1.7 / Python 3.4 / virtualenv
 - django-taggit package (https://github.com/alex/django-taggit)
+- django-taggit-templatetags package (https://github.com/feuervogel/django-taggit-templatetags) - (for tag count, tag cloud)
 
 ### Sources: 
 - Workshop: Test-Driven Web Development with Django (http://test-driven-django-development.readthedocs.org/en/latest/)

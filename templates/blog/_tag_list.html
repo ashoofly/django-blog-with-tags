@@ -1,8 +1,20 @@
+{% load taggit_extras %}
+<!--{% get_taglist as tags for 'blog' %}-->
+{% get_tagcloud as cloud for 'blog' %}
+
 <ul>
-    {% for tag in tags %}
-        <li><a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a></li>
+    {% for tag in mytags %}
+        <li><a href="{% url 'tagged' tag.slug %}">{{ tag.name }}</a> ({{ tag.num_times }})</li>
     {% empty %}
         <p>No Tags</p>
     {% endfor %}
-
 </ul>
+
+    {% for t in cloud %}
+        <font size={{t.weight|floatformat:0}}>
+            {% if not forloop.first %} {% endif %}
+            <a href="{% url 'tagged' t.slug %}">{{ t.name }}</a>
+        </font>
+    {% empty %}
+    {% endfor %}
+    

@@ -1,12 +1,13 @@
 from django.views.generic import DetailView, ListView
-from taggit.models import Tag
+from django.db.models import Count
+from taggit.models import Tag, TaggedItem
 
 from .models import Entry
 
 class TagMixin(object):
     def get_context_data(self, **kwargs):
         context = super(TagMixin, self).get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all()
+        context['tags'] = Tag.objects.annotate(num_times=Count('taggit_taggeditem_items'))
         return context
 
 
