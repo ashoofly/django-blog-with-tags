@@ -41,6 +41,10 @@ INSTALLED_APPS = (
     'taggit_templatetags',
 )
 
+#taggit_templatetags settings
+TAGGIT_TAGCLOUD_MIN = 2.0
+
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
