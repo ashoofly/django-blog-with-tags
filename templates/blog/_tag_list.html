@@ -1,6 +1,5 @@
 {% load taggit_extras %}
 <!--{% get_taglist as tags for 'blog' %}-->
-{% get_tagcloud as cloud for 'blog' %}
 
 <ul>
     {% for tag in mytags %}
@@ -9,7 +8,7 @@
         <p>No Tags</p>
     {% endfor %}
 </ul>
-
+<!--
     {% for t in cloud %}
         <font size={{t.weight|floatformat:0}}>
             {% if not forloop.first %} {% endif %}
@@ -17,4 +16,4 @@
         </font>
     {% empty %}
     {% endfor %}
-    
+ -->   
